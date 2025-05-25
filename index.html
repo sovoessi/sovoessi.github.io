@@ -18,6 +18,7 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button id="darkModeToggle" aria-label="Toggle dark mode" class="dark-mode-toggle">🌙</button>
     </div>
   </header>
 
@@ -67,6 +68,40 @@
       <p>&copy; 2025 Jacques Sovoessi. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Dark mode toggle logic
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    // Check saved theme or system preference
+    function getPreferredTheme() {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️';
+        toggleBtn.setAttribute('aria-label', 'Switch to light mode');
+      } else {
+        body.classList.remove('dark-mode');
+        toggleBtn.textContent = '🌙';
+        toggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+      }
+      localStorage.setItem('theme', theme);
+    }
+
+    // Initialize theme on load
+    setTheme(getPreferredTheme());
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = body.classList.toggle('dark-mode');
+      setTheme(isDark ? 'dark' : 'light');
+    });
+  </script>
 
 </body>
 </html>

@@ -93,3 +93,33 @@ h1, h2, h3 {
   padding: 2rem 1rem;
   font-size: 0.9rem;
 }
+/* Dark mode styles */
+body.dark-mode {
+  background: #181a1b;
+  color: #f1f1f1;
+}
+
+body.dark-mode .header,
+body.dark-mode .footer,
+body.dark-mode .section {
+  background: #23272a;
+  color: #f1f1f1;
+}
+
+body.dark-mode .project-card {
+  background: #222;
+  border-color: #333;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: color 0.2s;
+}
+
+body.dark-mode .dark-mode-toggle {
+  color: #ffd700;
+}
